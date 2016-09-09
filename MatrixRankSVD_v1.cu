@@ -1,4 +1,3 @@
-
 #include "cuda_runtime.h"
 #include "device_launch_parameters.h"
 #include "cuda_runtime_api.h"
@@ -123,7 +122,7 @@ int main()
 	cudaStatus = cudaFree(dev_U);
 	printError(5.3);
 
-    cudaStatus = cudaDeviceReset();
+        cudaStatus = cudaDeviceReset();
 	printError(6);
 
 	for (unsigned int i = 0; i < M; ++i)
