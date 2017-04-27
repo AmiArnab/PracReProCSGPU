@@ -36,7 +36,7 @@
 
 using namespace std;
 
-// Actual Image Dimension 64x80 (or 80x64 ?) // 64x80 confirmed!!
+// Actual Image Dimension 64x80 confirmed!!
 // Total number of training images 1209
 // Total number of measured images 1755
 
@@ -147,7 +147,7 @@ int main()
 	getMatRank(&rank, dev_P0, threshold, M, N);                                                      //Get matrix rank of the basis
 	thrust::device_vector<float> Mt(M);
 	cout << rank << endl;
-	/*cudaDeviceSynchronize();                                                                         //Synchronize
+	cudaDeviceSynchronize();                                                                         //Synchronize
 	d = 10 * rank;                                                                                   //Set frame interval for subspace update
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	cout << "Constructing approximate basis vector for runnig subspace...\n";
@@ -159,7 +159,7 @@ int main()
 	cout << "Initializing running approximate basis with computed approximate basis...\n";
 	cudaMemcpy(thrust::raw_pointer_cast(&devPt[0]), dev_P0, M*rank*sizeof(float), cudaMemcpyDeviceToDevice); //Copy initial approximate basis data to running subspace basis
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	cout << "Transposing measured image data for easy access...\n";*/
+	cout << "Transposing measured image data for easy access...\n";
 	cublasSgeam(bhandle, opT, opN, Nimg, Mimg, &alpha, dev_imgdata, Mimg, &beta, NULL, Mimg, dev_imgdata, Nimg);     //Transpose the image data
 	cout << "Constructing running measurement vector...\n";
 	//thrust::device_vector<float> Mt(Mimg);                                                                     //Construct the running image vector
@@ -178,7 +178,7 @@ int main()
 	showImage(&Mt,Mimg,Nimg,rows,cols);
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------	
 //	!!!!!!!!!!!!!!!!!!!!!!!   Need to compute the support set first !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-/*	while (time < N)                                                                                                                       //Actual loop begins
+	while (time < N)                                                                                                                       //Actual loop begins
 	{
 		itmt = Mt.begin();
 		Mt.insert(itmt, itimgt + (time*M), itimgt + ((time + 1)*M) - 1);                                                                   //Get running frame from image data
@@ -227,7 +227,7 @@ int main()
 		UpdateSubspace(&devPt, dev_Lt1, &devPLt, M, N, d, rank, dosvd);                                                                    //Update the subspace
 		cudaDeviceSynchronize();
 		time++;                                                                                                                            //Increase the time count
-	}*/
+	}
 
 	cin >> c;
 
