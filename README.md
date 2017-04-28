@@ -4,6 +4,8 @@ It uses NVIDIA CUDA toolkit including CUBLAS, CUSOLVER and Thrust. Also, it uses
 
 CImg and CSVParser library should be included (the header files) to use with this program.
 
+Also, CUDA > 7.5 and compute capability > 2.0 are required.
+
 ATTENTION!!!!!
 
 FULL OF BUGS, USE CAREFULLY!!!!!
